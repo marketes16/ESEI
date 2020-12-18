@@ -509,33 +509,96 @@ git branch -d nueva-rama
 git push origin --delete nueva-rama
 
 #+END_SRC
-* Borrar rama
 
-En local:
-
+* Ramas
+Ver en qué rama estamos,  se marca con * en la que estoy 
 #+BEGIN_SRC sh
-git branch -d rama-local
-
+git branch
 #+END_SRC
 
-Si no se borra así, con =-D=
-
+Crear una rama nueva 
 #+BEGIN_SRC sh
-git branch -d rama-local
-
+git branch nombreRama
 #+END_SRC
 
-En remoto::
-
+Crear una rama apuntando a un commit
 #+BEGIN_SRC sh
-git push origin --delete rama-remota
+git checkout nombreRama sha1DelCommit
+#+END_SRC 
 
+Moverse entre ramas 
+#+BEGIN_SRC sh
+git checkout nombreRama
 #+END_SRC
 
-o también:
+Crear rama y moverse a ella del tirón
 #+BEGIN_SRC sh
-git push origin :ramaremota
+git checkout -b nombreRama
+#+END_SRC
 
+Volver a Master
+#+BEGIN_SRC sh
+git blame nombreFichero
+
+git blame -L 6,8 nombreFichero
+#+END_SRC
+git checkout master 
+
+Ver ramas identificadas por colores
+#+BEGIN_SRC sh
+git log --graph  
+#+END_SRC
+
+Incorpora todos los commits a mi código master que estén en la rama que corrija el bug
+#+BEGIN_SRC sh
+git merge nombreRama 
+#+END_SRC 
+
+Borrar rama 
+#+BEGIN_SRC sh
+git branch -d nombreRama
+#+END_SRC
+
+
+Me dice la rama en la que estoy
+#+BEGIN_SRC sh
+git branch 
+#+END_SRC
+
+* Blame
+
+Blame significa "culpable", y esta herramienta nos permite filtrar en una porción de código, quién ha introducido en el programa una nueva mejora o un error. 
+
+#+BEGIN_SRC sh
+git blame nombreFichero
+
+git blame -L 6,8 nombreFichero
+#+END_SRC
+
+
+* Stashing
+
+Estás picando en tu trabajo y tu jefe te dice que tienes que hacer otra cosa YA.
+Vuelca en una pila temporal todos los cambios hechos desde el último `commit`.
+
+#+BEGIN_SRC sh
+git stash
+#+END_SRC
+
+realizas el trabajo importante... y vuelves a lo tuyo:  
+
+#+BEGIN_SRC sh
+git stash pop
+#+END_SRC
+
+
+Es una pila, por eso el pop. Se puede hacer más `stash` y el `pop` te saca el último que entra.
+Para verlos todos utilizamos:
+
+#+BEGIN_SRC sh
+git stash list
+
+git stash código
 #+END_SRC
 
 * Mantener un repositorio forkeado actualizado
