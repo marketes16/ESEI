@@ -407,8 +407,6 @@ Ahora ya podremos hacer =git add= con éxito.
 
 La solución viene de [[http://stackoverflow.com/questions/17683458/how-do-i-commit-case-sensitive-only-filename-changes-in-git][Stackoverflow]]
 
-
-
 *** Borrar del repositorio
 
 Borrar un archivo del repositorio sin borrarlo del sistema de directorios local:
@@ -536,13 +534,10 @@ Crear rama y moverse a ella del tirón
 git checkout -b nombreRama
 #+END_SRC
 
-Volver a Master
+Volver a Main
 #+BEGIN_SRC sh
-git blame nombreFichero
-
-git blame -L 6,8 nombreFichero
+git checkout main
 #+END_SRC
-git checkout master 
 
 Ver ramas identificadas por colores
 #+BEGIN_SRC sh
@@ -574,7 +569,6 @@ git blame nombreFichero
 
 git blame -L 6,8 nombreFichero
 #+END_SRC
-
 
 * Stashing
 
