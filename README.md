@@ -558,65 +558,6 @@ git pull upstream master
 
 #+END_SRC
 
-* Publicación web
-
-Si el contenido del proyecto es HTML, podemos utilizar a GitHub como servidor web de nuestro contenido web, a través de la funcionalidad [[http://pages.github.com/][Pages]].
-
-Se puede hacer de dos maneras:
-
-** Nombre del repositorio
-
-Si el nombre del repositorio sigue la estructura "nombre-de-usuarix.github.io", el proyecto que cuelgue de ahí se publicará automágicamente en http://nombre-de-usuarix.github.io
-
-** Rama gh-pages
-
-Cualquier repositorio que tenga la rama =gh-pages= será publicado, y se verá su contenido web.
-
-Por ejemplo, si tenemos un repositorio con nombre =mi-proyecto= que contiene una web y queremos publicarlo como página web, solo tenemos que crear una nueva rama =branch= de nuestro proyecto que llamaremos =gh-pages=:
-
-#+BEGIN_SRC sh
-git checkout -b gh-pages
-#+END_SRC
-
-Luego ponemos ahí todo el contenido de la rama =master=:
-
-#+BEGIN_SRC sh
-git merge master
-#+END_SRC
-
-Por último subimos a GitHub todo lo que tenemos en la nueva rama:
-
-#+BEGIN_SRC sh
-$ git push -u origin gh-pages
-
-#+END_SRC
-
-En unos minutos, GitHub lo habrá publicado en una URL del tipo http://nombre-de-usuarix.github.io/mi-proyecto
-
-Si tu repositorio es solo una web, puedes optar por utilizar solo la rama =gh-pages= en vez de mantener las dos ramas. Para ello tienes que elegir en GitHub qué rama utilizas.
-
-Si mantienes las dos, actualizar la web se puede convertir en algo tedioso si lo haces habitualmente.
-
-Para facilitar la tarea, [[http://brettterpstra.com/2012/09/26/github-tip-easily-sync-your-master-to-github-pages/][brettterpstra.com recomienda una solución]], puedes editar =.git/config= y añadir estas líneas a =[remote "origin"]=:
-
-#+BEGIN_SRC sh
-push = +refs/heads/master:refs/heads/gh-pages
-push = +refs/heads/master:refs/heads/master
-#+END_SRC
-
-Quedando así:
-
-#+BEGIN_SRC sh
-[remote "origin"]
-	fetch = +refs/heads/*:refs/remotes/origin/*
-	url = git@github.com:user/repo.git
-	push = +refs/heads/master:refs/heads/gh-pages
-	push = +refs/heads/master:refs/heads/master
-
-#+END_SRC
-
-De esta manera, cuando hagas git push lo harás en los dos repos.
-
 * Gitignore
 https://git-scm.com/docs/gitignore
 * Problemas
